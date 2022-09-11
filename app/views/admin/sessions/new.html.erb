@@ -1,26 +1,57 @@
-<h2>Log in</h2>
+<body　class="d-flex flex-column vh-100">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <header>
+    <div class="container">
+      <div class="row pb-3">
+        <div class="col-3 pt-4">
+          <a class="h1 text-decoration-none text-dark  border border-secondary pl-5 pr-5">LOGO</a>
+        </div>
+        <div class="col-9 text-right p-3">
+          <% if admin_signed_in? %>
+          <% else %>
+          <%= link_to "About" , about_path ,class: "btn btn-outline-dark mr-3" %>
+          <button type="button" class="btn btn-outline-dark mr-3">商品一覧</button>
+          <button type="button" class="btn btn-outline-dark mr-3">新規登録</button>
+          <button type="button" class="btn btn-outline-dark">ログイン</button>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  </header>
 
-<%= render "admin/shared/links" %>
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 offset-1 text-center">
+          <p class="h4 bg-light">管理者ログイン</h4>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col">
+        <%= form_with model: @admin, url: admin_session_path do |f| %>
+          <div class="field">
+            <%= f.label :email,"メールアドレス"%>
+            <%= f.email_field :email, autofocus: true, :placeholder =>"sample@example.com", autocomplete: "email" %>
+          </div>
+    
+          <div class="field">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+    
+          <div class="actions">
+            <%= f.submit "ログイン" , class: "btn btn-primary" %>
+          </div>
+        <% end %>
+    
+        <%= render "admin/shared/links" %>
+        </div>
+      </div>  
+    </div>
+  </main>
+
+  <footer></footer>
+
+</body>
