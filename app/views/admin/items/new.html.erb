@@ -2,4 +2,29 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<h1>新規登録画面</h1>
+<main class="border">
+  <span class="h4 bg-light">商品新規登録</span>
+
+  <%= form_with model: @item, url: admin_items_path, method: :create do |f| %>
+  <div class="field">
+    <%= f.label :image, "商品画像" %>
+    <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+  </div>
+  <div class="field">
+    <%= f.label :name, "商品名" %>
+    <%= f.text_area :name, :placeholder => "商品名", class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :introduction, "商品説明" %>
+    <%= f.text_field :introduction, :placeholder => "ここに説明文を記述します", class: "form-control", rows: "5" %>
+  </div>
+  <div class="field">
+    <%= f.label :genre_id, "商品名" %>
+    <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --")  %>
+  </div>
+
+  <% end %>
+
+
+
+</main>
