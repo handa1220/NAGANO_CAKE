@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_09_10_035711) do
 
   create_table "items", force: :cascade do |t|
     t.integer "genre_id", null: false
-    t.integer "name", null: false
+    t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "in_active", default: true, null: false

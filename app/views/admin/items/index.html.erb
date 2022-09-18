@@ -2,4 +2,37 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<h1>商品一覧</h1>
+<main>
+  <span class="h4 bg-light">商品一覧</span>
+
+  <div>
+    <table class="table">
+      <thead>
+        <tr class="table-secondary">
+          <th>商品id</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td>
+            <%= link_to admin_item_path(item.id) do %>
+              <%= item.name %>
+            <% end %>
+          </td>
+          <td><%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.in_active %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+
+</main>
