@@ -15,6 +15,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -26,6 +27,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:genre_id, :name, :introduction, :price, :in_active)
+    params.require(:item).permit(:genre_id, :name, :introduction, :price, :in_active, :image)
   end
 end

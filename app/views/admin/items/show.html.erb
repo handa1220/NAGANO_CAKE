@@ -3,3 +3,35 @@
 </header>
 
 <h1>商品詳細画面</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-lg-3">
+      <%= image_tag @item.image.get_image(150,100) %>
+    </div>
+
+    <div class="col-md-9 col-lg-3">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td>税込価格</br>(税抜価格)</td>
+            <td><%= (@item.price)*1.1 %> (<%= @item.price %>)</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
