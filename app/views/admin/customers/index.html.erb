@@ -2,4 +2,45 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<h1>会員一覧</h1>
+<main>
+
+  <div class="container">
+    <div class="row">
+      <span class="h4 bg-light">会員一覧</span>
+      <table class="table">
+        <thead>
+          <tr class="table-secondary">
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td>
+              <ins>
+                <%= link_to admin_customer_path(customer.id), class: "text-dark" do %>
+                  <%= customer.last_name %><%= customer.first_name %>
+                <% end %>
+              </ins>
+            </td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.is_deleted? %>
+                <p class="text-success"><strong>有効</strong></p>
+              <% else %>
+                <p class="text-secondary"><strong>退会</strong></p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @customers %>
+    </div>
+  </div>
+
+</main>

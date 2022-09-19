@@ -3,16 +3,19 @@
 </header>
 
 <main>
-  
+
 
   <div class="container">
     <div class="row">
+
       <span class="h4 bg-light">商品一覧</span>
+
       <span>
         <%= link_to new_admin_item_path do %>
         新規登録
         <% end %>
       </span>
+
       <table class="table table-borderless ">
         <thead>
           <tr class="table-secondary">
@@ -47,6 +50,9 @@
           <% end %>
         </tbody>
       </table>
+
+      <%= paginate @items %>
+
     </div>
   </div>
 

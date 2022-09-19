@@ -1,6 +1,8 @@
 class Admin::ItemsController < ApplicationController
+  protect_from_forgery
+
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def new

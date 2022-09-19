@@ -14,38 +14,38 @@
     <%= form_with model: @item, url: admin_items_path, method: :create do |f| %>
     <div class="form-group row">
       <%= f.label :image, "商品画像", class: "col-md-2 col-form-label" %>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label :name, "商品名", class: "col-md-2 col-form-label" %>
-      <div class="col-md-9">
+      <div class="col-md-8">
        <%= f.text_field :name, :placeholder => "商品名", class: "form-control" %>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label :introduction, "商品説明", class: "col-md-2 col-form-label" %>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <%= f.text_area :introduction, :placeholder => "ここに説明文を記述します", class: "form-control", rows: "5" %>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label :genre_id, "ジャンル", class: "col-md-2 col-form-label" %>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "-- 選択してください --"}, {class: "form-control"}) %>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label :price, "税抜価格", class: "col-md-2 col-form-label" %>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <%= f.text_field :price, :placeholder => "1000", class: "form-control" %>
       </div>
       <%= f.label :price, "円" %>
     </div>
     <div class="form-group row">
       <%= f.label :in_active, "販売ステータス", class: "col-md-2 col-form-label" %>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <%= f.radio_button :in_active, :true %>
         <%= f.label :in_active, "販売中" %>
         <%= f.radio_button :in_active, :false %>
