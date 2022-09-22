@@ -2,4 +2,37 @@
   <%= render "admin/shared/header" %>
 </header>
 
-<h1>注文履歴一覧</h1>
+<main>
+
+  <div class="container">
+    <div class="row">
+      <span class="h4 bg-light">会員一覧</span>
+      <table class="table">
+        <thead>
+          <tr class="table-secondary">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><ins><%= order.created_at %></ins></td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td>
+              <%= @total_amount %>
+            </td>
+            <td>
+              <%= Order.order_statuses_i18n[:"order.order_status"]%>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
+  </div>
+
+</main>
