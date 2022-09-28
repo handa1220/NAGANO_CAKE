@@ -19,7 +19,13 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td><ins><%= order.created_at %></ins></td>
+            <td>
+              <ins>
+              <%= link_to admin_order_path(order.id) do %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M')%>
+              <% end %>
+              </ins>
+            </td>
             <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
             <td>
               <%= @total_amount %>

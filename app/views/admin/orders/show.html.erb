@@ -2,4 +2,80 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<h1>注文履歴詳細</h1>
+<main>
+  <div class="container">
+    <div class="row p-3">
+      <span class="h4 bg-light">　注文履歴詳細　</span>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3"><p>購入者</p></div>
+      <div class="col-md-9">
+        <%= link_to admin_customer_path(@order.customer.id) do %>
+        <%= @order.customer.last_name %><%= @order.customer.first_name %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><p>注文日</p></div>
+      <div class="col-md-9">
+        <%= @order.created_at.strftime('%Y/%m/%d')%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><p>配送先</p></div>
+      <div class="col-md-9">
+        〒<%= @order.delivery_postal_code %><%= @order.delivery_address %></br>
+        <%= @order.delivery_name %>
+      </div>
+    </div>
+
+    <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+    <div class="form-group row">
+      <%= f.label :order_status, "会員ステータス", class: "col-md-3" %>
+      <div class="col-md-9">
+        <%= f.select :order_status, Order.order_statuses_i18n.invert, {class: "form-control"} %>
+        <%= f.submit "更新", class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr class="table-secondary">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+
+        <!--  ここから続き  -->
+
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <ins>
+              <%= link_to admin_order_path(order.id) do %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M')%>
+              <% end %>
+              </ins>
+            </td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td>
+              <%= @total_amount %>
+            </td>
+            <td>
+              <%= Order.order_statuses_i18n[:"order.order_status"]%>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</main>
