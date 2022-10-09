@@ -6,7 +6,7 @@
 
   <div class="container">
     <div class="row">
-      <span class="h4 bg-light">会員一覧</span>
+      <span class="h4 bg-light">注文履歴一覧</span>
       <table class="table">
         <thead>
           <tr class="table-secondary">
@@ -31,7 +31,7 @@
               <%= @total_amount %>
             </td>
             <td>
-              <%= Order.order_statuses_i18n[:"order.order_status"]%>
+              <%= order.order_status_i18n %>
             </td>
           </tr>
           <% end %>

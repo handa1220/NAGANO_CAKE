@@ -29,10 +29,16 @@
         <%= @order.delivery_name %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-3"><p>支払方法</p></div>
+      <div class="col-md-9">
+        <%= @order.payment_method_i18n %>
+      </div>
+    </div>
 
     <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
     <div class="form-group row">
-      <%= f.label :order_status, "会員ステータス", class: "col-md-3" %>
+      <%= f.label :order_status, "注文ステータス", class: "col-md-3" %>
       <div class="col-md-9">
         <%= f.select :order_status, Order.order_statuses_i18n.invert, {class: "form-control"} %>
         <%= f.submit "更新", class: "btn btn-success" %>
@@ -51,25 +57,26 @@
             <th>製作ステータス</th>
           </tr>
         </thead>
-
-        <!--  ここから続き  -->
-
         <tbody>
-          <% @orders.each do |order| %>
+          <% @order_details.each do |order_detail| %>
           <tr>
             <td>
-              <ins>
-              <%= link_to admin_order_path(order.id) do %>
-              <%= order.created_at.strftime('%Y/%m/%d %H:%M')%>
+              <%= order_detail.item.name %>
+            </td>
+            <td>
+              <%= order_detail.price_at_purchase %>
+            </td>
+            <td>
+              <%= order_detail.amount %>
+            </td>
+            <td>
+              <%= order_detail.price_at_purchase*order_detail.amount %>
+            </td>
+            <td>
+              <%= form_with model: @order_details, url: admin_order_detail_path, method: :patch do |f| %>
+                <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, {class: "form-control"} %>
+                <%= f.submit "更新", class: "btn btn-success" %>
               <% end %>
-              </ins>
-            </td>
-            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-            <td>
-              <%= @total_amount %>
-            </td>
-            <td>
-              <%= Order.order_statuses_i18n[:"order.order_status"]%>
             </td>
           </tr>
           <% end %>
