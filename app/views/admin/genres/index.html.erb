@@ -2,44 +2,45 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<main class="border">
-
-  <span class="h4 bg-light">ジャンル一覧・追加</span>
-
-  <%= form_with model: @genre, url: "/admin/genres", method: :create do |f| %>
-  <div class=field>
-    <%= f.label :name, "ジャンル名" %>
-    <%= f.text_field :name, :placeholder => "ジャンル名" %>
-    <%= f.submit "新規登録", class: "btn btn-success" %>
+<div class="container">
+  <div class="row">
+    <div class="col-5 text-center pt-3">
+      <p class="h4 bg-light">ジャンル一覧・追加</p>
+    </div>
   </div>
-  <% end %>
 
-  <table class="table">
-    <thead>
-      <tr class="table-secondary">
-        <th colspan="2">ジャンル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @genres.each do |genre| %>
-      <tr>
-        <td>
-          <%= genre.name %>
-        </td>
-        <td>
-          <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %>
-        </td>
-      </tr>
+  <div class="row">
+    <div class="col mt-4">
+      <%= form_with model: @genre, url: "/admin/genres", method: :create do |f| %>
+        <%= f.label :name, "ジャンル名" %>
+        <%= f.text_field :name, :placeholder => "ジャンル名" , class: "ml-5" %>
+        <%= f.submit "　新規登録　", class: "btn btn-success ml-5" %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 
-
-
-
-
-
-
-
-
-</main>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td>
+              <%= genre.name %>
+            </td>
+            <td>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

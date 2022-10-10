@@ -2,21 +2,19 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<main>
-
-
   <div class="container">
     <div class="row">
-
-      <span class="h4 bg-light">商品一覧</span>
-
-      <span>
-        <%= link_to new_admin_item_path do %>
-        新規登録
+      <div class="col-md-3 text-center pt-3 pl-0">
+        <p class="h4 bg-light">商品一覧</p>
+      </div>
+      <div class="col-md-2 offset-md-7 align-self-center">
+        <%= link_to new_admin_item_path, class: "text-dark" do %>
+          <i class="fas fa-plus fa-2x"></i>
         <% end %>
-      </span>
+      </div>
+    </div>
 
-      <table class="table table-borderless ">
+      <table class="table table-borderless border-bottom">
         <thead>
           <tr class="table-secondary">
             <th>商品ID</th>
@@ -50,10 +48,6 @@
           <% end %>
         </tbody>
       </table>
-
       <%= paginate @items %>
-
-    </div>
+      
   </div>
-
-</main>

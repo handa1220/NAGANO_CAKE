@@ -2,11 +2,16 @@
     <%= render "admin/shared/header" %>
 </header>
 
-<main>
 
-  <div class="container">
-    <div class="row">
-      <span class="h4 bg-light">会員一覧</span>
+<div class="container">
+  <div class="row">
+    <div class="col-3 text-center pt-3 pl-0">
+      <p class="h4 bg-light">会員一覧</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
       <table class="table">
         <thead>
           <tr class="table-secondary">
@@ -39,8 +44,7 @@
           <% end %>
         </tbody>
       </table>
-      <%= paginate @customers %>
     </div>
+    <%= paginate @customers %>
   </div>
-
-</main>
+</div>
