@@ -81,7 +81,7 @@
                 <%= (order_detail.price_at_purchase*order_detail.amount).to_s(:delimited) %>
               </td>
               <td>
-                <%= form_with model: @order_details, url: admin_order_detail_path, method: :patch do |f| %>
+                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
                   <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, {}, {class: "form-control-sm"} %>
                   <%= f.submit "更新", class: "btn btn-success btn-sm" %>
                 <% end %>
