@@ -1,31 +1,31 @@
-  <header class="border">
-    <div class="container">
-      <div class="row">
-        <div class="col-2 pt-4">
-          <a class="h1 text-decoration-none text-dark  border border-secondary ">LOGO</a>
-        </div>
-        <div class="col-10 text-right pt-4">
-          <% if admin_signed_in? %>
-          <%= link_to "商品一覧" , admin_items_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
-          <%= link_to "会員一覧" , admin_customers_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
-          <%= link_to "注文履歴一覧" , admin_root_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
-          <%= link_to "ジャンル一覧" , admin_genres_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
-          <%= link_to "ログアウト" , destroy_admin_session_path , method: :delete ,class: "btn btn-outline-dark btn-sm mr-1" %>
-          <% else %>
-          <%= link_to "About" , about_path ,class: "btn btn-outline-dark mr-1" %>
-          <%= link_to "商品一覧" , items_path ,class: "btn btn-outline-dark mr-1" %>
-          <%= link_to "新規登録" , new_customer_registration_path ,class: "btn btn-outline-dark mr-1" %>
-          <%= link_to "ログイン" , new_customer_session_path ,class: "btn btn-outline-dark mr-1" %>
-          <% end %>
-        </div>
+<header class="border">
+  <div class="container">
+    <div class="row">
+      <div class="col-2 pt-4">
+        <a class="h1 text-decoration-none text-dark  border border-secondary ">LOGO</a>
       </div>
-      <div class="row justify-content-end pb-3 ">
-        <div class="col-4 input-group">
-          <input class="form-control form-control-sm input-group-prepend" placeholder="Search"></input>
-          <span class="input-group-btn input-group-append">
-            <submit class="btn btn-outline-dark btn-sm"><i class="fas fa-search"></i></submit>
-          </span>
-        </div>
+      <div class="col-10 text-right pt-4">
+        <% if admin_signed_in? %>
+        <%= link_to "商品一覧" , admin_items_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
+        <%= link_to "会員一覧" , admin_customers_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
+        <%= link_to "注文履歴一覧" , admin_root_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
+        <%= link_to "ジャンル一覧" , admin_genres_path ,class: "btn btn-outline-dark btn-sm mr-1" %>
+        <%= link_to "ログアウト" , destroy_admin_session_path , method: :delete ,class: "btn btn-outline-dark btn-sm mr-1" %>
+        <% else %>
+        <%= link_to "About" , about_path ,class: "btn btn-outline-dark mr-1" %>
+        <%= link_to "商品一覧" , items_path ,class: "btn btn-outline-dark mr-1" %>
+        <%= link_to "新規登録" , new_customer_registration_path ,class: "btn btn-outline-dark mr-1" %>
+        <%= link_to "ログイン" , new_customer_session_path ,class: "btn btn-outline-dark mr-1" %>
+        <% end %>
       </div>
     </div>
-  </header>
+    <div class="row justify-content-end pb-3 ">
+      <div class="col-4 input-group">
+        <input class="form-control form-control-sm input-group-prepend" placeholder="Search"></input>
+        <span class="input-group-btn input-group-append">
+          <submit class="btn btn-outline-dark btn-sm"><i class="fas fa-search"></i></submit>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
