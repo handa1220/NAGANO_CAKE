@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     delete "cart_items/destroy_all", as: "destroy_all"
   end
 
-  
+
   namespace :admin do
     root to: "homes#top"
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
