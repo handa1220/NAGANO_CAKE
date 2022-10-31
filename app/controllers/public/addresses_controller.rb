@@ -1,5 +1,7 @@
 class Public::AddressesController < ApplicationController
 
+  protect_from_forgery
+
   def index
     @address = Address.new
     @addresses = Address.where(customer_id: current_customer.id)
@@ -10,7 +12,8 @@ class Public::AddressesController < ApplicationController
 
   def create
     address = Address.new(address_params)
-    address.save
+    address.customer_id = current_customer.id
+    address.save!
     redirect_to addresses_path
   end
 
@@ -20,10 +23,10 @@ class Public::AddressesController < ApplicationController
   def destroy
   end
 
-  protected
+  private
 
   def address_params
-    params.require(:address).permit(:name, :postal_code, :address)
+    params.require(:address).permit(:customer_id, :name, :postal_code, :address)
   end
 
 end
