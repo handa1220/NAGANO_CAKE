@@ -4,10 +4,10 @@
 
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col-2 offset-1">
-      <table class="table table-bordered table-sm">
+    <div class="col-3 pl-5">
+      <table class="table table-borderless table-sm border border-dark">
         <thead>
-          <tr>
+          <tr align="center" class="border border-dark">
             <th>ジャンル検索</th>
           </tr>
         </thead>
@@ -15,15 +15,24 @@
           <% @genres.each do |genre| %>
           <tr>
             <td>
-              <%= genre.name %>
+              　<%= genre.name %>
             </td>
           </tr>
           <% end %>
+          <tr>
+            <td>　</td>
+          </tr>
+          <tr>
+            <td>　</td>
+          </tr>
+          <tr>
+            <td>　</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="col-7 cover-img" style="background-image:url('/assets/sample.jpg');" >
+    <div class="col-7 ml-4 cover-img" style="background-image:url('/assets/sample.jpg');" >
       <div class="cover-text text-center mt-5">
         <p>
           ようこそ、ながのCAKEへ！</br>
@@ -34,18 +43,18 @@
       </div>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-9 offset-3 pl-0 pt-3">
       <p class="h3">新着商品</p>
     </div>
   </div>
-  
-  <div class="row">
+
+  <div class="row pt-3">
     <div class="col-3"></div>
     <% @items.first(4).each do |item| %>
-    <div class="col-2 pl-0">
-      <%= image_tag item.get_image(180,100) %></br>
+    <div class="col-2">
+      <%= image_tag item.get_image(300,200) %></br>
       <%= item.name %></br>
       ￥<%= item.price.to_s(:delimited) %>
     </div>
@@ -56,5 +65,5 @@
       </ins>
     </div>
   </div>
-  
+
 </div>
