@@ -41,22 +41,25 @@
         </p>
       </div>
 
-      <div class="row pt-3">
+      <div class="row pt-2">
         <p class="h5">
           <%= @item.introduction %>
         </p>
       </div>
 
-      <div class="row pt-5 d-flex align-items-center">
+      <div class="row pt-4 d-flex align-items-center">
         <span class="h4">
           ￥<%= @item.price.to_s(:delimited) %>
         </span>
         <span>　(税込)</span>
       </div>
 
-      <div class="row pt-4">
-
+      <%= form_with model: @cart_item, url: cart_items_path, method: :create do |f| %>
+      <div class="row pt-3">
+        <%= f.select :amount, ['1','2','3','4','5','6','7','8','9','10'], {include_blank: "個数選択"}, class: "form_control col-md-4 p-0" %>
+        <%= f.submit "カートに入れる", class: "btn btn-success btn-sm col-md-4 offset-md-2" %>
       </div>
+      <% end %>
 
     </div>
 
