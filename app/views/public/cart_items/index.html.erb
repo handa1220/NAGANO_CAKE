@@ -1,1 +1,35 @@
-<h1>カート内商品一覧画面</h1>
+<%= render "admin/shared/header" %>
+
+<div class="container-fluid">
+  <div class="row pt-4">
+    <div class="col offset-2">
+      <span class="h4 bg-light">　ショッピングカート　</span>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-secondary">
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_item.each do |cart_item| %>
+          <tr>
+            <td>
+              <%= cart_item.name %>
+            </td>
+            <td>
+              <%= cart_item.with_tax_price 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
