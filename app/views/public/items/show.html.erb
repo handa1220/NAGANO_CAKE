@@ -54,7 +54,7 @@
         <span>　(税込)</span>
       </div>
 
-      <%= form_with model: @cart_item, url: cart_items_path, method: :create do |f| %>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
       <div class="row pt-3">
         <%= f.select :amount, ['1','2','3','4','5','6','7','8','9','10'], {include_blank: "個数選択"}, class: "form_control col-md-4 p-0" %>
         <%= f.submit "カートに入れる", class: "btn btn-success btn-sm col-md-4 offset-md-2" %>
