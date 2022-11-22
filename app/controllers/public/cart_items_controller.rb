@@ -18,7 +18,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to cart_item_path
+    redirect_to cart_items_path
   end
 
   def create
