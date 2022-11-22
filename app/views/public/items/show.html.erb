@@ -1,4 +1,4 @@
-<%= render "admin/shared/header" %>
+<%= render "public/shared/header" %>
 
 <div class="container-fluid">
   <div class="row pt-5">
@@ -59,6 +59,7 @@
         <%= f.select :amount, ['1','2','3','4','5','6','7','8','9','10'], {include_blank: "個数選択"}, class: "form_control col-md-4 p-0" %>
         <%= f.submit "カートに入れる", class: "btn btn-success btn-sm col-md-4 offset-md-2" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
       </div>
       <% end %>
 

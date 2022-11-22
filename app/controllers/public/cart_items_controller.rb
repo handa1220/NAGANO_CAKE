@@ -4,6 +4,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_item = CartItem.where(customer_id: current_customer.id)
+    @total = 0
   end
 
   def update
@@ -16,10 +17,12 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_item_path
   end
 
   def create
-    cart_item = current_customer.cart_items.new(cart_item_params)
+    cart_item = CartItem.new(cart_item_params)
     cart_item.save!
     redirect_to cart_items_path
   end
