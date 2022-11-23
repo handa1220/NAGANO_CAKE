@@ -6,7 +6,7 @@ ja:
         transfer: "銀行振込"
 
       order_status:
-        awaiting_paymet: "入金待ち"
+        awaiting_payment: "入金待ち"
         payment_confirmation: "入金確認"
         under_manufacture: "製作中"
         preparing_to_ship: "発送準備中"
@@ -17,9 +17,9 @@ ja:
         not_initiated: "着手不可"
         awaiting_manufacture: "製作待ち"
         under_manufacture: "製作中"
-        anufacturing_completed: "製作完了"
+        manufacturing_completed: "製作完了"
 
-ja:
+
   activerecord:
     errors:
       messages:
