@@ -40,7 +40,7 @@
       <div class="row pt-3">
         <% @items.each do |item| %>
         <div class="col-3 pt-3">
-          <%= link_to image_tag(item.get_image(300,200)), item_path(item.id) %></br>
+          <%= link_to image_tag(item.get_image(150,100)), item_path(item.id) %></br>
           <%= item.name %></br>
           ￥<%= item.price.to_s(:delimited) %>
         </div>

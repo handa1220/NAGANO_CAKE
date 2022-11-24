@@ -53,12 +53,15 @@
     <div class="col-3"></div>
     <% @items.first(4).each do |item| %>
     <div class="col-2">
-      <%= image_tag item.get_image(300,200) %></br>
+      <%= image_tag item.get_image(150,100) %></br>
       <%= item.name %></br>
       ￥<%= item.price.to_s(:delimited) %>
     </div>
     <% end %>
-    <div class="col align-self-end">
+  </div>
+
+  <div class="row justify-content-end pt-3">
+    <div class="col-3 text-right">
       <ins>
         <%= link_to "全ての商品を見る＞", items_path %>
       </ins>

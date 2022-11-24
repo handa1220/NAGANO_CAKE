@@ -1,8 +1,6 @@
 class Admin::ItemsController < ApplicationController
-  
+
   before_action :authenticate_admin!
-  
-  protect_from_forgery
 
   def index
     @items = Item.page(params[:page])
@@ -14,9 +12,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    item.save
-    redirect_to admin_item_path(item.id)
+    @item = Item.new(item_params)
+    @genres = Genre.all
+    if @item.save
+      redirect_to admin_item_path(@item.id)
+    else
+      render :new
+    end
   end
 
   def show
