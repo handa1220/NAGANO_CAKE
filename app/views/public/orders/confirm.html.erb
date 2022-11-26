@@ -49,28 +49,28 @@
       </table>
     </div>
 
-    <div class="row">
-      <div class="col-1 offset-1">
-        <p class="h5">支払方法</p>
+  </div>
+
+  <div class="row pt-3">
+      <div class="col-2 offset-1 pr-0">
+        <p class="h5 font-weight-bold">支払方法</p>
       </div>
-      <div class="col-8">
-        <%= @order.payment_methods_i18n %>
+      <div class="col-8 pl-0">
+        <%= @order.payment_method_i18n %>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-1 offset-1">
-        <p class="h5">お届け先</p>
+    <div class="row pt-3">
+      <div class="col-2 offset-1 pr-0">
+        <p class="h5 font-weight-bold">お届け先</p>
       </div>
-      <div class="col-8">
-        <% if params[:order][:select_address] == 2 %>
-          <%= '〒' + @address.postal_code + '　' + @address.address %></br>
+      <div class="col-8 pl-0">
+        <% if params[:order][:select_address] == "2" %>
+          〒<%= @address.postal_code %>　<%= @address.address %></br>
           <%= @address.name %>
         <% else %>
-          <%= '〒' + @order.postal_code + '　' + @order.address %></br>
+          〒<%= @order.postal_code %>　<%= @order.address %></br>
           <%= @order.name %>
         <% end %>
       </div>
     </div>
-
-  </div>
