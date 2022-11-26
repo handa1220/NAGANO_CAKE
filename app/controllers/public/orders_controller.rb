@@ -9,7 +9,9 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @postage = 800
     @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
+    if params[:order][:select_address] == nil
+      redirect_to new_order_path
+    elsif params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.first_name + current_customer.last_name
@@ -22,6 +24,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    order = current_customer.orders.new(order_params)
+    order.save
+
+    cart_items = CartItem.where(customer_id: current_customer.id)
+    order_detail = OrderDetail.new
+    cart_items.each do |cart_item|
+      order_detail.order_id = order.id
+      order_detail.item_id = cart_item.item_id
+      order_detail.price_at_purchase = cart_item.item.with_tax_price
+      order_detail.amount = cart_item.amount
+      order_detail.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to thanks_orders_path
   end
 
   def index
@@ -33,7 +49,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :total_price, :postage)
   end
 
 end

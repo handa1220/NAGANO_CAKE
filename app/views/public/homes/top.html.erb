@@ -53,7 +53,9 @@
     <div class="col-3"></div>
     <% @items.first(4).each do |item| %>
     <div class="col-2">
-      <%= image_tag item.get_image(150,100) %></br>
+      <%= link_to item_path(item.id) do %>
+        <%= image_tag item.get_image(150,100) %></br>
+      <% end %>
       <%= item.name %></br>
       ￥<%= item.price.to_s(:delimited) %>
     </div>
