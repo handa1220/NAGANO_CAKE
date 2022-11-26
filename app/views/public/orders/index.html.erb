@@ -1,1 +1,49 @@
-<h1>注文履歴画面</h1>
+<%= render "public/shared/header" %>
+
+<div class="container-fluid">
+  <div class="row pt-4">
+    <div class="col-4 offset-2">
+      <span class="h4 bg-light">　注文履歴一覧　</span>
+    </div>
+  </div>
+
+  <div class="row pt-4">
+    <div class="col pl-5 pr-5">
+      <table class="table table-bordered h6">
+        <thead>
+          <tr class="table-secondary">
+            <td>注文日</td>
+            <td>配送先</td>
+            <td>注文商品</td>
+            <td>支払金額</td>
+            <td>ステータス</td>
+            <td>注文詳細</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order.each do |order| %>
+            <tr>
+              <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td class="pt-0 pb-0">
+                〒<%= order.postal_code %></br>
+                <%= order.address %></br>
+                <%= order.name %>
+              </td>
+              <td class="align-middle pt-1 pb-1">
+                <% order.order_details.each do |order_detail| %>
+                  <%= order_detail.item.name %>
+                <% end %>
+              </td>
+              <td class="align-middle"><%= order.total_price.to_s(:delimited) %>円</td>
+              <td class="align-middle"><%= order.order_status_i18n %></td>
+              <td class="align-middle text-center"><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>
