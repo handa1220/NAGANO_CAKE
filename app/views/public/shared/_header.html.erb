@@ -1,13 +1,15 @@
   <header class="border">
     <div class="container-fuild">
       <div class="row">
-        <div class="col-3 pt-4 pl-5">
+        <div class="col-3 offset-1 pt-4">
           <%= link_to "　LOGO　", root_path ,class: "h1 text-decoration-none text-dark border border-secondary" %>
         </div>
 
-        <% if customer_signed_in? %>
-        <p class="col-3 align-self-end text-right m-0">ようこそ、<%= current_customer.last_name %>さん！</p>
-        <% end %>
+        <p class="col-2 align-self-end text-right m-0">
+          <% if customer_signed_in? %>
+            ようこそ、<%= current_customer.last_name %>さん！
+          <% end %>
+        </p>
 
         <div class="col-6 text-right pt-4">
           <% if customer_signed_in? %>

@@ -1,73 +1,86 @@
 <%= render "public/shared/header" %>
 
+<body>
 
-<div class="container-fluid">
-  <div class="row mt-5">
-    <div class="col-3 pl-5">
-      <table class="table table-borderless table-sm border border-dark">
-        <thead>
-          <tr align="center" class="border border-dark">
-            <th>ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-          <tr>
-            <td>
-              　<%= genre.name %>
-            </td>
-          </tr>
+  <div class="container-fluid"  style="height: 700px">
+    <div class="row pt-5">
+      <div class="col-2 ml-5">
+        <table class="table table-borderless table-sm border border-dark">
+          <thead>
+            <tr align="center" class="border border-dark">
+              <th>ジャンル検索</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+              <td>
+                　<%= genre.name %>
+              </td>
+            </tr>
+            <% end %>
+            <tr>
+              <td>　</td>
+            </tr>
+            <tr>
+              <td>　</td>
+            </tr>
+            <tr>
+              <td>　</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-9">
+
+        <div class="row h-75">
+          <div class="col-10 ml-3" style="background-image:url('/assets/sample.jpg');">
+            <div class="row h-100">
+              <div class="col-9 offset-2 border align-self-center pt-3" style="background-color:white">
+                <p>
+                  ようこそ、ながのCAKEへ！</br>
+                  このサイトでは、ケーキ販売のECサイトになります。</br>
+                  会員でない方も商品の閲覧はできますが、</br>
+                  購入には会員登録が必要になります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row pt-3">
+          <div class="col-12">
+            <p class="h3 font-weight-bold">新着商品</p>
+          </div>
+        </div>
+
+        <div class="row pt-4">
+          <% @items.first(4).each do |item| %>
+            <div class="col-3 pr-0">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image(150,100) %></br>
+              <% end %>
+              <%= item.name %></br>
+              ￥<%= item.price.to_s(:delimited) %>
+            </div>
           <% end %>
-          <tr>
-            <td>　</td>
-          </tr>
-          <tr>
-            <td>　</td>
-          </tr>
-          <tr>
-            <td>　</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        </div>
 
-    <div class="col-7 ml-4 cover-img" style="background-image:url('/assets/sample.jpg');" >
-      <div class="cover-text text-center mt-5">
-        <p>
-          ようこそ、ながのCAKEへ！</br>
-          このサイトでは、ケーキ販売のECサイトになります。</br>
-          会員でない方も商品の閲覧はできますが、</br>
-          購入には会員登録が必要になります。
-        </p>
+        <div class="row justify-content-end pt-3">
+          <div class="col text-right">
+            <ins>
+              <%= link_to "全ての商品を見る＞", items_path %>
+            </ins>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-9 offset-3 pl-0 pt-3">
-      <p class="h3">新着商品</p>
-    </div>
-  </div>
+</body>
 
-  <div class="row pt-3">
-    <div class="col-3"></div>
-    <% @items.first(4).each do |item| %>
-    <div class="col-2">
-      <%= link_to item_path(item.id) do %>
-        <%= image_tag item.get_image(150,100) %></br>
-      <% end %>
-      <%= item.name %></br>
-      ￥<%= item.price.to_s(:delimited) %>
-    </div>
-    <% end %>
-  </div>
+<footer class="border">
 
-  <div class="row justify-content-end pt-3">
-    <div class="col-3 text-right">
-      <ins>
-        <%= link_to "全ての商品を見る＞", items_path %>
-      </ins>
-    </div>
-  </div>
-
-</div>
+</footer>
