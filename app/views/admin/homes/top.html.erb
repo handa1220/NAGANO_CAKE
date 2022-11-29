@@ -1,8 +1,9 @@
 <%= render "admin/shared/header" %>
 
 
-<main>
-  <div class="container">
+<body>
+
+  <div class="container" style="height: 650px">
     <div class="row">
       <div class="col-4 text-center pt-3">
         <p class="h4 bg-light">注文履歴一覧</p>
@@ -37,7 +38,16 @@
           <% end %>
         </tbody>
       </table>
-      <%= paginate @orders %>
     </div>
+    
+    <div class="row">
+      <div class="col">
+        <%= paginate @orders %>
+      </div>
+    </div>
+    
   </div>
-</main>
+
+</body>
+
+<footer class="border"></footer>

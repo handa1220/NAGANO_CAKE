@@ -1,31 +1,56 @@
+
 <header class="border">
-  <div class="container-fuild">
-    <div class="row">
-      <div class="col-3 pt-4 pl-5">
-        <%= link_to "　LOGO　", root_path ,class: "h1 text-decoration-none text-dark border border-secondary" %>
-      </div>
-      <div class="col-9 text-right pt-4">
+
+  <nav class="navbar navbar-expand-sm navbar-light">
+
+    <%= link_to "　LOGO　", root_path ,class: "h1 text-decoration-none text-dark border border-secondary" %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex flex-column" id="navbar">
+      <ul class="navbar-nav ml-auto mt-3">
         <% if admin_signed_in? %>
-        <%= link_to "商品一覧" , admin_items_path ,class: "btn btn-outline-dark  mr-2" %>
-        <%= link_to "会員一覧" , admin_customers_path ,class: "btn btn-outline-dark  mr-2" %>
-        <%= link_to "注文履歴一覧" , admin_root_path ,class: "btn btn-outline-dark  mr-2" %>
-        <%= link_to "ジャンル一覧" , admin_genres_path ,class: "btn btn-outline-dark  mr-2" %>
-        <%= link_to "ログアウト" , destroy_admin_session_path , method: :delete ,class: "btn btn-outline-dark mr-4" %>
+        <li class="nav-item">
+            <%= link_to "商品一覧" , admin_items_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員一覧" , admin_customers_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "注文履歴一覧" , admin_root_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ジャンル一覧" , admin_genres_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト" , destroy_admin_session_path , method: :delete ,class: "nav-link btn btn-sm btn-outline-dark" %>
+          </li>
         <% else %>
-        <%= link_to "About" , about_path ,class: "btn btn-outline-dark mr-2" %>
-        <%= link_to "商品一覧" , items_path ,class: "btn btn-outline-dark mr-2" %>
-        <%= link_to "新規登録" , new_customer_registration_path ,class: "btn btn-outline-dark mr-2" %>
-        <%= link_to "ログイン" , new_customer_session_path ,class: "btn btn-outline-dark mr-4" %>
+          <li class="nav-item">
+            <%= link_to "About" , about_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "商品一覧" , items_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録" , new_customer_registration_path ,class: "nav-link btn btn-sm btn-outline-dark mr-4" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン" , new_customer_session_path ,class: "nav-link btn btn-sm btn-outline-dark" %>
+          </li>
         <% end %>
-      </div>
-    </div>
-    <div class="row justify-content-end pb-3 mr-2">
-      <div class="col-4 input-group">
-        <input class="form-control form-control-sm input-group-prepend" placeholder="Search"></input>
+      </ul>
+
+      <div class="input-group justify-content-end mt-3 mb-2">
+        <input class="input-group-prepend" placeholder="Search"></input>
         <span class="input-group-btn input-group-append">
           <submit class="btn btn-outline-dark btn-sm"><i class="fas fa-search"></i></submit>
         </span>
       </div>
+
     </div>
-  </div>
+  </nav>
+
 </header>

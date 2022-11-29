@@ -1,52 +1,64 @@
 <%= render "admin/shared/header" %>
 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 text-center pt-3 pl-0">
+<body>
+  <div class="container-fluid" style="height: 650px">
+    <div class="row pt-3">
+      <div class="col-3 offset-1 text-center">
         <p class="h4 bg-light">商品一覧</p>
       </div>
-      <div class="col-md-2 offset-md-7 pt-3">
+      <div class="col-2 offset-6">
         <%= link_to new_admin_item_path, class: "text-dark" do %>
           <i class="fas fa-plus fa-2x"></i>
         <% end %>
       </div>
     </div>
 
-      <table class="table table-borderless border-bottom">
-        <thead>
-          <tr class="table-secondary">
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @items.each do |item| %>
-          <tr>
-            <td><%= item.id %></td>
-            <td>
-              <ins>
-                <%= link_to admin_item_path(item.id), class: "text-dark" do %>
-                  <%= item.name %>
+    <div class="row pt-3">
+      <div class="col-10 offset-1">
+        <table class="table table-sm table-borderless border-bottom">
+          <thead>
+            <tr class="table-secondary">
+              <th style="width: 10%">商品ID</th>
+              <th style="width: 30%">商品名</th>
+              <th style="width: 10%">税抜価格</th>
+              <th style="width: 30%">ジャンル</th>
+              <th style="width: 20%">ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td>
+                <ins>
+                  <%= link_to admin_item_path(item.id), class: "text-dark" do %>
+                    <%= item.name %>
+                  <% end %>
+                </ins>
+              </td>
+              <td><%= item.price.to_s(:delimited) %></td>
+              <td><%= item.genre.name %></td>
+              <td>
+                <% if item.in_active? %>
+                  <p class="text-success"><strong>販売中</strong></p>
+                <% else %>
+                  <p class="text-secondary"><strong>販売停止中</strong></p>
                 <% end %>
-              </ins>
-            </td>
-            <td><%= item.price.to_s(:delimited) %></td>
-            <td><%= item.genre.name %></td>
-            <td>
-              <% if item.in_active? %>
-                <p class="text-success"><strong>販売中</strong></p>
-              <% else %>
-                <p class="text-secondary"><strong>販売停止中</strong></p>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @items %>
-      
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= paginate @items %>
+      </div>
+    </div>
+
   </div>
+</body>
+
+  <footer class="border"></footer>

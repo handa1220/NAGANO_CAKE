@@ -1,53 +1,56 @@
 <%= render "public/shared/header" %>
 
-<div class="container-fluid">
-  <div class="row pt-5">
-    <div class="col-3 pl-5">
-      <table class="table table-borderless table-sm border border-dark">
-        <thead>
-          <tr align="center" class="border border-dark">
-            <th>ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-          <tr>
-            <td>
-              　<%= genre.name %>
-            </td>
-          </tr>
-          <% end %>
-          <tr>
-            <td>　</td>
-          </tr>
-          <tr>
-            <td>　</td>
-          </tr>
-          <tr>
-            <td>　</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="col-9">
-      <div class="row">
-        <div class="col">
-          <span class="h3 font-weight-bold">商品一覧</span>
-          <span class="h5">(全<%= Item.all.count %>件)</span>
-        </div>
+<body>
+  <div class="container-fluid"  style="height: 650px">
+    <div class="row pt-5">
+      <div class="col-2 ml-5">
+        <table class="table table-borderless table-sm border border-dark">
+          <thead>
+            <tr align="center" class="border border-dark">
+              <th>ジャンル検索</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+              <td>
+                　<%= genre.name %>
+              </td>
+            </tr>
+            <% end %>
+            <tr>
+              <td>　</td>
+            </tr>
+            <tr>
+              <td>　</td>
+            </tr>
+            <tr>
+              <td>　</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="row pt-3">
-        <% @items.each do |item| %>
-        <div class="col-3 pt-3">
-          <%= link_to image_tag(item.get_image(150,100)), item_path(item.id) %></br>
-          <%= item.name %></br>
-          ￥<%= item.price.to_s(:delimited) %>
+
+      <div class="col-9">
+        <div class="row">
+          <div class="col">
+            <span class="h3 font-weight-bold">商品一覧</span>
+            <span class="h5">(全<%= Item.all.count %>件)</span>
+          </div>
         </div>
-        <% end %>
-        <%= paginate @items %>
+        <div class="row pt-3">
+          <% @items.each do |item| %>
+          <div class="col-3 pt-3">
+            <%= link_to image_tag(item.get_image(150,100)), item_path(item.id) %></br>
+            <%= item.name %></br>
+            ￥<%= item.price.to_s(:delimited) %>
+          </div>
+          <% end %>
+          <%= paginate @items %>
+        </div>
       </div>
     </div>
   </div>
+</body>
 
-</div>
+<footer class="border"></footer>

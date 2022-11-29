@@ -1,4 +1,9 @@
 ja:
+  views:
+    pagination:
+      last: "Last ≫"
+      next: "Next >"
+
   enums:
     order:
       payment_method:

@@ -1,15 +1,15 @@
 <%= render "public/shared/header" %>
 
 <body>
-  
-  <div class="container-fluid">
-    
+
+  <div class="container-fluid" style="height: 650px">
+
     <div class="row pt-4">
       <div class="col-4 offset-2">
         <span class="h4 bg-light">　注文履歴詳細　</span>
       </div>
     </div>
-  
+
     <div class="row pt-5">
       <div class="col-7 offset-1">
         <span class="h5 font-weight-bold">注文情報</span>
@@ -36,7 +36,7 @@
           </tr>
         </table>
       </div>
-  
+
       <div class="col-3">
         <span class="h5 font-weight-bold">請求情報</span>
         <table class="table table-bordered mt-2">
@@ -55,7 +55,7 @@
         </table>
       </div>
     </div>
-  
+
     <div class="row pt-3">
       <div class="col-9 offset-1">
         <span class="h5 font-weight-bold">注文内容</span>
@@ -74,9 +74,11 @@
               <td><%= (order_detail.price_at_purchase * order_detail.amount).to_s(:delimite) %></td>
             </tr>
           <% end %>
+        </table>
       </div>
     </div>
-    
   </div>
-  
+
 </body>
+
+<footer class="border"></footer>

@@ -1,17 +1,17 @@
 <%= render "admin/shared/header" %>
 
 
-<main class="border">
-  <div class="container">
+<body>
+  <div class="container" style="height: 650px">
 
-    <div class="row p-4">
-      <div class="col">
-        <span class="h4 bg-light">商品編集</span>
+    <div class="row">
+      <div class="col-3 offset-1 text-center pt-3">
+        <p class="h4 bg-light">商品編集</p>
       </div>
     </div>
 
     <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-      <div class="form-group row">
+      <div class="form-group row pt-4">
         <%= f.label :image, "商品画像", class: "col-md-2 col-form-label" %>
         <div class="col-md-8">
           <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
@@ -66,4 +66,6 @@
 
   </div>
 
-</main>
+</body>
+
+<footer class="border"></footer>
