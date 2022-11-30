@@ -46,8 +46,13 @@
             ￥<%= item.price.to_s(:delimited) %>
           </div>
           <% end %>
-          <%= paginate @items %>
         </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col">
+        <%= paginate @items %>
       </div>
     </div>
   </div>
